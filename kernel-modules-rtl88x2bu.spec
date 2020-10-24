@@ -1,5 +1,5 @@
-%define module_name rtl8812au
-%define module_version 7502.20200205
+%define module_name rtl88x2bu
+%define module_version 5.8.7.1
 %define module_release alt1
 
 %define flavour	@kflavour@
@@ -13,7 +13,7 @@ BuildRequires(pre): kernel-headers-modules-@kflavour@
 
 Name: kernel-modules-%module_name-%flavour
 Group: System/Kernel and hardware
-Summary: Module for Realtek RTL8812ce
+Summary: Module for Realtek RTL88x2bu
 Version: %module_version
 Release: %module_release.%kcode.%kbuildrelease
 Url: https://github.com/tomaspinho/rtl8821ce.git
@@ -34,7 +34,7 @@ BuildRequires: kernel-headers-modules-%flavour = %kepoch%kversion-%krelease
 BuildRequires: kernel-source-%module_name = %module_version
 
 %description
-These packages contain Realtek RTL8812au module.
+These packages contain Realtek RTL88x2bu module.
 
 %prep
 rm -rf kernel-source-%module_name-%module_version
@@ -48,11 +48,10 @@ tar xvf %kernel_src/kernel-source-%module_name-%module_version.tar.bz2
     CROSS_COMPILE= \
     KSRC=%_usrsrc/linux-%kversion-%flavour \
     modules \
-    USER_EXTRA_CFLAGS="-Wno-error=date-time -Wno-error=incompatible-pointer-types" \
-    V=1
+    USER_EXTRA_CFLAGS="-Wno-error=date-time -Wno-error=incompatible-pointer-types"
 
 %install
-install -D -m 644 8812au.ko %buildroot/%module_dir/8812au.ko
+install -D -m 644 88x2bu.ko %buildroot/%module_dir/%module_name.ko
 
 %files
 %module_dir

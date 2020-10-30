@@ -1,5 +1,5 @@
-%define module_name rtl88x2bu
-%define module_version 5.8.7.1
+%define module_name rtl8821cu
+%define module_version 5.4.1
 %define module_release alt1
 
 %define flavour	@kflavour@
@@ -9,15 +9,16 @@ BuildRequires(pre): kernel-headers-modules-@kflavour@
 
 %setup_kernel_module %flavour
 
-%define module_dir /lib/modules/%kversion-%flavour-%krelease/net/wireless/realtek/rtlwifi/%module_name
+%define module_dir /lib/modules/%kversion-%flavour-%krelease/net/wireless/realtek/%module_name
 
 Name: kernel-modules-%module_name-%flavour
-Group: System/Kernel and hardware
-Summary: Module for Realtek RTL88x2bu
 Version: %module_version
 Release: %module_release.%kcode.%kbuildrelease
-Url: https://github.com/tomaspinho/rtl8821ce.git
-License: GPLv2
+
+Summary: Realtek RTL8811CU/RTL8821CU USB wifi adapter driver
+Group: System/Kernel and hardware
+License: GPL-2.0
+URL: https://github.com/brektrou/rtl8821CU
 
 Packager: Kernel Maintainer Team <kernel@packages.altlinux.org>
 
@@ -34,7 +35,7 @@ BuildRequires: kernel-headers-modules-%flavour = %kepoch%kversion-%krelease
 BuildRequires: kernel-source-%module_name = %module_version
 
 %description
-These packages contain Realtek RTL88x2bu module.
+%{summary}.
 
 %prep
 rm -rf kernel-source-%module_name-%module_version
@@ -51,7 +52,7 @@ tar xvf %kernel_src/kernel-source-%module_name-%module_version.tar.bz2
     USER_EXTRA_CFLAGS="-Wno-error=date-time -Wno-error=incompatible-pointer-types"
 
 %install
-install -D -m 644 88x2bu.ko %buildroot/%module_dir/%module_name.ko
+install -Dm0644 *.ko %buildroot/%module_dir/%module_name.ko
 
 %files
 %module_dir

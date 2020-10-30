@@ -1,5 +1,5 @@
-%define module_name rtl8821cu
-%define module_version 5.4.1
+%define module_name rtl8188fu
+%define module_version 1.0
 %define module_release alt1
 
 %define flavour	@kflavour@
@@ -9,16 +9,16 @@ BuildRequires(pre): kernel-headers-modules-@kflavour@
 
 %setup_kernel_module %flavour
 
-%define module_dir /lib/modules/%kversion-%flavour-%krelease/net/wireless/realtek/%module_name
+%define module_dir /lib/modules/%kversion-%flavour-%krelease/net/wireless
 
 Name: kernel-modules-%module_name-%flavour
 Version: %module_version
 Release: %module_release.%kcode.%kbuildrelease
 
-Summary: Realtek RTL8811CU/RTL8821CU USB wifi adapter driver
-Group: System/Kernel and hardware
+Summary: Realtek 8188F USB WiFi adapter driver
 License: GPL-2.0
-URL: https://github.com/brektrou/rtl8821CU
+Group: System/Kernel and hardware
+URL: https://github.com/kelebek333/rtl8188fu
 
 Packager: Kernel Maintainer Team <kernel@packages.altlinux.org>
 

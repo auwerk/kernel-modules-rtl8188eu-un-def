@@ -1,5 +1,5 @@
-%define module_name rtl8188fu
-%define module_version 1.0
+%define module_name rtl8188eu
+%define module_version 5.13.3
 %define module_release alt1
 
 %define flavour	@kflavour@
@@ -15,15 +15,15 @@ Name: kernel-modules-%module_name-%flavour
 Version: %module_version
 Release: %module_release.%kcode.%kbuildrelease
 
-Summary: Realtek 8188F USB WiFi adapter driver
+Summary: Realtek RTL8188EU Wireless Lan Driver for Linux
 License: GPL-2.0
 Group: System/Kernel and hardware
-URL: https://github.com/kelebek333/rtl8188fu
+URL: https://github.com/ivanovborislav/rtl8188eu
 
 Packager: Kernel Maintainer Team <kernel@packages.altlinux.org>
 
 ExclusiveOS: Linux
-ExclusiveArch: %ix86 x86_64
+ExclusiveArch: %karch
 
 PreReq: kernel-image-%flavour = %kepoch%kversion-%krelease
 Provides: kernel-modules-%module_name-%kversion-%flavour-%krelease = %version-%release

@@ -1,1 +1,2 @@
 specsubst: kflavour
+copy: *.patch

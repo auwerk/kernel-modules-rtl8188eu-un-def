@@ -1,6 +1,6 @@
 %define module_name rtl8188eu
 %define module_version 5.13.3
-%define module_release alt1
+%define module_release alt2
 
 %define flavour	@kflavour@
 %define karch %ix86 x86_64
@@ -25,6 +25,8 @@ Packager: Kernel Maintainer Team <kernel@packages.altlinux.org>
 ExclusiveOS: Linux
 ExclusiveArch: %karch
 
+Patch0: kernel-modules-rtl8188eu-5.13.3-alt-regulatory-fix.patch
+
 PreReq: kernel-image-%flavour = %kepoch%kversion-%krelease
 Provides: kernel-modules-%module_name-%kversion-%flavour-%krelease = %version-%release
 Conflicts: kernel-modules-%module_name-%kversion-%flavour-%krelease < %version-%release
@@ -41,6 +43,7 @@ BuildRequires: kernel-source-%module_name = %module_version
 rm -rf kernel-source-%module_name-%module_version
 tar xvf %kernel_src/kernel-source-%module_name-%module_version.tar.bz2
 %setup -D -T -n kernel-source-%module_name-%module_version
+%patch0 -p1
 
 %build
 . %_usrsrc/linux-%kversion-%flavour/gcc_version.inc
